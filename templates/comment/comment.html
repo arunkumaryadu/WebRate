@@ -1,0 +1,11 @@
+{% extends 'accounts/base.html' %}
+
+{% block content %}
+    <h1>Please Enter A Comment</h1>
+    <form  method="POST">
+        {{form.as_p}}
+        {% csrf_token %}
+
+        <input type="submit" name="ok" value="submit">
+    </form>
+  {% endblock %}

@@ -1,0 +1,48 @@
+{% extends 'accounts/base.html' %}
+
+{% block content %}
+
+<div  style=" margin-left:300px;margin-top:80px;background-color: #02101b;border-radius: 25px;height:400px;width:400px;">
+
+    <h2 style="background-color:#031625;margin-top:5px;border-radius: 25px;height:60px;width:400px;padding-left:140px;padding-top:10px;">Log-In</h2>
+
+
+<div style="padding-left:30px;padding-top:20px;">
+
+
+      {% if form.errors %}
+        <p style="color: red">Your username and password didn't match. Please try again.</p>
+      {% endif %}
+      <form method="post">
+        {% csrf_token %}
+        <input type="hidden" name="next" value="{{ next }}" />
+        <table class="table" style=" border-color:black; border : 0;">
+        {% for field in form %}
+         <tr style=" border-color:black; border : 0;">
+           <td style=" border-color:black; border : 0; width:20px;">  {{ field.label_tag }}</td>
+           <td style=" border-color:black; border : 0;width:20px;">  {{ field }}</td>
+
+            {% for error in field.errors %}
+              <p style="color: red">{{ error }}</p>
+            {% endfor %}
+            {% if field.help_text %}
+              <p><small style="color: grey">{{ field.help_text }}</small></p>
+            {% endif %}
+        </tr>
+        {% endfor %}
+    <tr style=" border-color:black; border : 0; ">
+      <td style=" border-color:black; border : 0; width:20px;">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Log in</button>
+      </td>
+      <td style=" border-color:black; border : 0;" >  <a class="btn btn-outline-success my-2 my-sm-0" style="padding-left:5px;" style="text-decoration:none;color:green;" href="/website/password_reset/">Forgot password <span class="sr-only">(current)</span></a>
+  </td>
+    </tr>
+
+
+        </table>
+      </form>
+</div>
+    </div>
+
+
+{% endblock %}

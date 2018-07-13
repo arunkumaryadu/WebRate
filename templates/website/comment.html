@@ -1,0 +1,199 @@
+{% extends 'accounts/base.html' %}
+
+{% block content %}
+
+{% for p in w2 %}
+
+
+<div class="row text-white" style="background-color: #02101b;border-radius: 25px;">
+
+    <div class="col" style="padding:5px;"> <img  src="/{{ p.website_logo.url }}" alt="Card image cap" height="200px" width="200px" style="border-radius: 25px;"></div>
+    <div class="col" style="padding:5px;">
+<table>
+  <tr>
+    <td><h1>{{ p.website_name }}</h1></td>
+  </tr>
+  <tr>
+    <td>
+{% if total_rating is 1%}
+<span class="fa fa-star" style="color: orange;"></span>
+<span class="fa fa-star"></span>
+<span class="fa fa-star"></span>
+<span class="fa fa-star"></span>
+<span class="fa fa-star"></span>
+{% elif total_rating is 2 %}
+<span class="fa fa-star" style="color: orange;"></span>
+<span class="fa fa-star" style="color: orange;"></span>
+<span class="fa fa-star"></span>
+<span class="fa fa-star"></span>
+<span class="fa fa-star"></span>
+{% elif total_rating is 3 %}
+<span class="fa fa-star" style="color: orange;"></span>
+<span class="fa fa-star" style="color: orange;"></span>
+<span class="fa fa-star" style="color: orange;"></span>
+<span class="fa fa-star"></span>
+<span class="fa fa-star"></span>
+{% elif total_rating is 4 %}
+<span class="fa fa-star" style="color: orange;"></span>
+<span class="fa fa-star" style="color: orange;"></span>
+<span class="fa fa-star" style="color: orange;"></span>
+<span class="fa fa-star" style="color: orange;"></span>
+<span class="fa fa-star"></span>
+{% elif total_rating is 5 %}
+<span class="fa fa-star" style="color: orange;"></span>
+<span class="fa fa-star" style="color: orange;"></span>
+<span class="fa fa-star" style="color: orange;"></span>
+<span class="fa fa-star" style="color: orange;"></span>
+<span class="fa fa-star" style="color: orange;"></span>
+{% else %}
+Rating not generated , Please visite later or give your opinion
+{% endif %}
+
+
+</td>
+  </tr>
+  <tr>
+    <td>Based on {{count}} Reviews</td>
+  </tr>
+  <tr>
+    <td><a href="{{ p.website_url }}/" target="_blank" class="btn btn-secondary"> Go To Website </a></td>
+  </tr>
+</table>
+    </div>
+    <div class="col"></div>
+    <div class="col"></div>
+
+</div>
+<br/>
+<div class="row text-white" style="background-color: #02101b;border-radius: 25px;">
+  <div class="col-sm-8">
+    <h3>Description  </h3>
+    <h6> {{ p.website_description }}</h6>
+  </div>
+  <div class="col-sm-4">
+    <h3>User Rating Scorecard</h3>
+    <table>
+      <tr>
+        <td><span class="fa fa-star" style="color: orange;"></span>
+        <span class="fa fa-star" style="color: orange;"></span>
+        <span class="fa fa-star" style="color: orange;"></span>
+        <span class="fa fa-star" style="color: orange;"></span>
+        <span class="fa fa-star" style="color: orange;"></span></td>
+        <td style="padding-left:20px;">{{fiveStar}}  Users</td>
+      </tr>
+      <tr>
+        <td> <span class="fa fa-star" style="color: orange;"></span>
+        <span class="fa fa-star" style="color: orange;"></span>
+        <span class="fa fa-star" style="color: orange;"></span>
+        <span class="fa fa-star" style="color: orange;"></span>
+        <span class="fa fa-star"></span></td>
+        <td style="padding-left:20px;">{{fourStar}}  Users</td>
+      </tr>
+      <tr>
+        <td><span class="fa fa-star" style="color: orange;"></span>
+        <span class="fa fa-star" style="color: orange;"></span>
+        <span class="fa fa-star" style="color: orange;"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+</td>
+        <td style="padding-left:20px;">{{threeStar}}  Users</td>
+      </tr>
+      <tr>
+        <td><span class="fa fa-star" style="color: orange;"></span>
+        <span class="fa fa-star" style="color: orange;"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+</td>
+        <td style="padding-left:20px;">{{twoStar}}  Users</td>
+      </tr>
+      <tr>
+        <td><span class="fa fa-star" style="color: orange;"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span></td>
+        <td style="padding-left:20px;">{{oneStar}}  Users</td>
+      </tr>
+    </table>
+  </div>
+
+</div>
+
+
+{% endfor %}
+<br/>
+<div class="row text-white" style="background-color: #02101b;border-radius: 25px;padding-left:15px;">
+  <div class="col-6" style="padding-top:60px;">  <h4>Please Enter Your Reviews: </h4></div>
+    <form  method="POST">
+  <div class="col-6" style="padding : 10px; color:#02101b;">  {{form.as_p}} {% csrf_token %}</div>
+    <div class="col-3" style="padding-bottom:10px;">  <input type="submit" name="ok" value="Submit" class="btn btn-primary"></div>
+    </form>
+</div>
+
+
+
+        <div class="container" >
+
+          <br/><br/><br/>
+
+        <div class="card text-white bg-dark mb-3" style="width: 100%;">
+          <div class="card-header">Reviews:</div>
+        </div>
+
+            {% for q in w3 %}
+          <div class="card text-center" style="background-color: #4B77BE;border-radius: 25px; color:white;">
+          <div class="card-header" style="color:white;">
+            {{q.user_id}}
+          </div>
+          <div class="card-body" style="color:white;">
+            <h5 class="card-title">
+            {% if q.rating is 1%}
+            <span class="fa fa-star" style="color: orange;"></span>
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span>
+            {% elif q.rating is 2 %}
+            <span class="fa fa-star" style="color: orange;"></span>
+            <span class="fa fa-star" style="color: orange;"></span>
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span>
+            {% elif q.rating is 3 %}
+            <span class="fa fa-star" style="color: orange;"></span>
+            <span class="fa fa-star" style="color: orange;"></span>
+            <span class="fa fa-star" style="color: orange;"></span>
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span>
+            {% elif q.rating is 4 %}
+            <span class="fa fa-star" style="color: orange;"></span>
+            <span class="fa fa-star" style="color: orange;"></span>
+            <span class="fa fa-star" style="color: orange;"></span>
+            <span class="fa fa-star" style="color: orange;"></span>
+            <span class="fa fa-star"></span>
+            {% elif q.rating is 5 %}
+            <span class="fa fa-star" style="color: orange;"></span>
+            <span class="fa fa-star" style="color: orange;"></span>
+            <span class="fa fa-star" style="color: orange;"></span>
+            <span class="fa fa-star" style="color: orange;"></span>
+            <span class="fa fa-star" style="color: orange;"></span>
+            {% else %}
+            Rating not generated , Please visite later or give your opinion
+            {% endif %}
+
+</h5>
+            <p class="card-text">  {{ q.coment}}</p>
+            </div>
+          <div class="card-footer" style="color:white;">
+            {{q.date}}
+          </div>
+        </div>
+
+        <br/><br/>
+        {% endfor %}
+
+
+        </div>
+
+{% endblock %}

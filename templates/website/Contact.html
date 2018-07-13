@@ -1,0 +1,84 @@
+{% extends 'accounts/base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+<div class="card text-white mb-3" style="max-width: 65rem;background-color: #02101b;">
+  <div class="card-header" style="background-color:#031625;"><h1>Contact Us</h1></div>
+  <div class="card-body" style="background-color:#031625;">
+    <h5 class="card-title" style="background-color:#031625;"><div id="accordion" style="background-color:#031625;">
+  <div class="card" style="background-color:#031625;">
+    <div class="card-header" id="headingOne" style="background-color:#031625;">
+      <h5 class="mb-0" style="background-color:#031625;">
+        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" style="text-decoration:none;color:white;">
+          Organization Info:
+        </button>
+      </h5>
+    </div>
+
+    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion" style="background-color:#031625;">
+      <div class="card-body" style="background-color:#031625;">
+    <table class="table">
+      <tr>
+        <td style="border:0px;">Organization Name </td>
+        <td style="border:0px;"> WebRate </td>
+      </tr>
+      <tr>
+        <td style="border:0px;">Email </td>
+        <td style="border:0px;">WebRate@gmail.com</td>
+      </tr>
+      <tr>
+        <td style="border:0px;">Founded</td>
+        <td style="border:0px;"> April 2018</td>
+      </tr>
+      <tr>
+        <td style="border:0px;">CEO</td>
+        <td style="border:0px;">xyz</td>
+      </tr>
+    </table>
+
+    </div>
+    </div>
+  </div>
+  <div class="card" style="background-color:#031625;">
+    <div class="card-header" id="headingTwo" style="background-color:#031625;">
+      <h5 class="mb-0" style="background-color:#031625;">
+        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" style="text-decoration:none;color:white;">
+          Team Members
+        </button>
+      </h5>
+    </div>
+    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion" style="background-color:#031625;">
+      <div class="card-body" style="background-color:#031625;">
+        <div class="card" style="width: 18rem;float:left; background-color:#031625;">
+          <img class="card-img-top" src="{% static "arunpic.jpg" %}" alt="Card image cap">
+          <div class="card-body" style="background-color:#031625;">
+            <h5 class="card-title" style="color:white;background-color:#031625;">Mr. Arun Kumar</h5>
+            <p class="card-text" style="color:white;background-color:#031625;">Software Engineer</p>
+            <a href="#" class="btn btn-primary">Go To Profile</a>
+          </div>
+        </div>
+        <div class="card" style="width: 18rem;float:left; margin-left:35px;background-color:#031625;">
+  <img class="card-img-top" src="{% static "chinmaypic.jpg" %}" alt="Card image cap">
+  <div class="card-body" style="background-color:#031625;">
+    <h5 class="card-title" style="background-color:#031625;">Mr. Chinmay Upadhayay</h5>
+    <p class="card-text" style="background-color:#031625;">Software Engineer</p>
+    <a href="#" class="btn btn-primary">Go To Profile</a>
+  </div>
+</div>
+<div class="card" style="width: 18rem;float:left;margin-left:35px;background-color:#031625;">
+  <img class="card-img-top" src="{% static "weblogo.jpeg" %}" alt="Card image cap">
+  <div class="card-body" style="background-color:#031625;">
+    <h5 class="card-title" style="background-color:#031625;">Mr. Rakesh Chakaradhari</h5>
+    <p class="card-text" style="background-color:#031625;">Software Engineer</p>
+    <a href="#" class="btn btn-primary">Go To Profile</a>
+  </div>
+</div>
+          </div>
+    </div>
+  </div>
+
+</div>
+   </h5>
+    </div>
+</div>
+{% endblock %}
